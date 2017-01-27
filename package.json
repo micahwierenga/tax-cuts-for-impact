@@ -1,0 +1,20 @@
+{
+  "name": "micah",
+  "version": "1.0.0",
+  "description": "A cause marketing campaign to encourage the commitment of the funds that taxpayers save toward impact investing or philanthropic efforts.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micahwierenga/tax-cuts-for-impact.git"
+  },
+  "author": "micah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micahwierenga/tax-cuts-for-impact/issues"
+  },
+  "homepage": "https://github.com/micahwierenga/tax-cuts-for-impact#readme"
+}
