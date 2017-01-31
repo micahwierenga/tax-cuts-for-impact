@@ -18,5 +18,8 @@ app.get('/api/private', authCheck, function(req, res) {
 	res.json({ message: "Hello from a private endpoint! "});
 });
 
+app.use('/scripts', express.static(__dirname + '/node_modules'));
+app.use('/', express.static(__dirname + '/public'));
+
 app.listen(3001);
 console.log('Listening on 3001');

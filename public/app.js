@@ -1,3 +1,5 @@
+console.log("here is the app.js")
+
 'use strict';
 
 angular

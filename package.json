@@ -2,7 +2,7 @@
   "name": "tax-cuts-for-impact",
   "version": "1.0.0",
   "description": "## Screenshots",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +25,9 @@
     "angular-messages": "^1.6.1",
     "angular-storage": "0.0.15",
     "angular-ui-router": "^0.4.2",
-    "auth0-angular": "^4.2.7"
+    "auth0-angular": "^4.2.7",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "express-jwt": "^5.1.0"
   }
 }

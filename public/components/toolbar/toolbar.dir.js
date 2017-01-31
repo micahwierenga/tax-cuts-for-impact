@@ -13,7 +13,7 @@
 		}
 	}
 
-	function toolbarController(auth, store, $location) {
+	function toolbarController(auth, store, $location, $http) {
 		var vm = this;
 		vm.login = login;
 		vm.logout = logout;
@@ -24,7 +24,12 @@
 				console.log(profile);
 				store.set('profile', profile);
 				store.set('id_token', token);
+				$http.post('/api/user', profile)
+					 .then(function(newUser) {
+					 	console.log(newUser)
+					 })
 				$location.path('/home');
+				
 			},
 			function(error) {
 				console.log(error);
