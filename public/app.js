@@ -23,7 +23,8 @@ angular
 		$stateProvider
 			.state('home', {
 				url: '/home',
-				templateUrl: 'components/home/home.tpl.html'
+				templateUrl: 'components/home/home.tpl.html',
+				controller: 'homeController as home'
 			})
 			.state('profile', {
 				url: '/profile',

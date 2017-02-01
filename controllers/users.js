@@ -9,13 +9,12 @@ function show (req, res) {
 		});
 };
 
-function create (req, res) {
-	console.log(req.body);
-	User.create(req.body).
-		.then(function(user) {
-			res.json(user);
-		})
-}
+function create(req, res) {
+	User.create(req.body)
+	    .then(function(newUser) {
+	    	res.json(newUser);
+	    });
+};
 
 function update (req, res) {
 	User.findById(req.params.id)
@@ -37,14 +36,7 @@ function destroy (req, res) {
 		});
 };
 
-function signup(req, res) {
-	User.create(req.body) {
-		.then(function(user) {
-			if (!user) return error(res, 'not saved');
-			auth.createJWT(user);
-			res.send({
-				token: auth.createJWT(user),
-				user: user
-			});
-		});
-	};
+module.exports.show = show;
+module.exports.create = create;
+module.exports.update = update;
+module.exports.destroy = destroy;

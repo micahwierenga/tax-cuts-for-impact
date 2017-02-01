@@ -1,30 +1,27 @@
 var express = require('express');
 var router = express.Router();
+var jwt = require('express-jwt');
 var userController = require('../controllers/users.js');
+var pledgeController = require('../controllers/pledges.js');
 var orgController = require('../controllers/orgs.js');
 // var auth = require('../resources/auth.js');
 
+var authCheck = jwt({
+	secret: new Buffer('HMfc2B_6fea0tqNyojzXKKNYCMfTQkSSai_EJTq811WDl82gFe-qTPdzHAA0-8TX'),
+	audience: 'cl7FNIVPdTJUKFNHGoGkizy7o7XX40pH'
+});
+
 // User Routes
 
-router.route('/api/user')
-	.post(userController.create)
+router.post('/api/user', userController.create);
 
-router.route('/api/me')
-	.get(auth.ensureAuthenticated, userController.show)
-	.put(auth.ensureAuthenticated, userController.update)
+router.post('/api/pledge', authCheck, pledgeController.create);
 
-// Auth Routes
 
-router.route('/auth/signup')
-	.post(userController.signup)
 
-router.route('/auth/login')
-	.post(userController.login)
 
 // Organization Routes
 
-router.route('/api/orgs')
-	.get(orgController.index)
-	.post(auth.ensureAuthenticated, orgController.create)
+
 
 module.exports = router;

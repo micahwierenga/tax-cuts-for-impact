@@ -1,8 +1,8 @@
 module.exports = function(sequelize, Sequelize) {
 	var model = sequelize.define("user", {
 		id: {
-			type: Sequelize.INTEGER,
-			allowNull: false,
+			type: Sequelize.STRING,
+			// allowNull: true,
 			primaryKey: true
 		},
 		name: {
@@ -19,6 +19,14 @@ module.exports = function(sequelize, Sequelize) {
 			unique: true,
 			isEmail: true
 		}
+		// createdAt: {
+		// 	type: Sequelize.DATE
+			
+		// },
+		// updatedAt: {
+		// 	type: Sequelize.DATE
+
+		// }
 		// password: Sequelize.STRING,
 		// googleId: {
 		// 	type: Sequelize.STRING,
