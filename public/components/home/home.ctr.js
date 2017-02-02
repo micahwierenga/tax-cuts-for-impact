@@ -11,9 +11,13 @@ function homeController($http) {
 
 
 	function result(total) {
-		console.log("i am hit")
 		vm.product = vm.total.a * vm.total.b;
-		console.log(vm.product);
+		$http
+			.get('/api/orgs')
+			.then(function(orgs) {
+				vm.orgArr = orgs.data;
+				console.log(vm.orgArr);
+			})
 	}
 
 	function getCurrentUser() {
@@ -25,9 +29,9 @@ function homeController($http) {
 	getCurrentUser();
 
 	function makePledge(pledge) {
-		// if (vm.currentUser == null) {
-		// 	return vm.noUser = "You must log in to create a pledge";
-		// }
+		if (vm.currentUser == null) {
+			return vm.noUser = "Please log in to create a pledge";
+		}
 		vm.new_pledge = {
 			"id": 2,
 			"user_id": vm.currentUser.id,

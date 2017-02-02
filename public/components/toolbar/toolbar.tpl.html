@@ -1,22 +1,17 @@
 <md-toolbar>
 	<div class="md-toolbar-tools">
 		<h2>
-			<span>Tax Cuts for Impact</span>
+			<a href="/"><span>Tax Cuts for Impact</span></a>
 		</h2>
 
 		<span flex></span>
 
+		<md-button><a href="/">Home</a></md-button>
 		<md-button
 			aria-label="Login"
 			ng-click="toolbar.login()"
 			ng-if="!toolbar.auth.isAuthenticated">
 			Signup / Login
-		</md-button>
-		<md-button
-			aria-label="Pledge"
-			ui-sref="pledge"
-			ng-if="toolbar.auth.isAuthenticated">
-			Pledge
 		</md-button>
 		<md-button
 			aria-label="Profile"

@@ -10,6 +10,7 @@
 		vm.getMessage = getMessage;
 		vm.getSecretMessage = getSecretMessage;
 		vm.message;
+		vm.pledge = {};
 
 		vm.profile = store.get('profile');
 
@@ -28,5 +29,23 @@
 					vm.message = response.data.message;
 				});
 		}
+
+		function getCurrentUser() {
+			vm.current = localStorage.getItem('profile');
+			vm.currentUser = JSON.parse(vm.current);
+			console.log(vm.currentUser);
+		}
+
+		getCurrentUser();
+
+		function getPledge() {
+			$http.get('/api/pledge')
+				 .then(function(response) {
+				 	vm.pledge = response.data[0];
+				 	console.log(vm.pledge)
+				 })
+		}
+
+		getPledge();
 	}
 })();

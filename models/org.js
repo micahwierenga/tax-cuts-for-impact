@@ -3,7 +3,6 @@ module.exports = function(sequelize, Sequelize) {
 		id: {
 			type: Sequelize.INTEGER,
 			autoIncrement: true,
-			allowNull: false,
 			primaryKey: true
 		},
 		name: {
@@ -13,6 +12,12 @@ module.exports = function(sequelize, Sequelize) {
 		url: {
 			type: Sequelize.STRING,
 			unique: true
+		},
+		thumbnail: {
+			type: Sequelize.STRING
+		},
+		threshold: {
+			type: Sequelize.INTEGER
 		}
 	});
 	return model;

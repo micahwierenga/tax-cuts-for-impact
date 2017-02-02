@@ -12,6 +12,9 @@ module.exports = function(sequelize, Sequelize) {
 		savings2016: {
 			type: Sequelize.STRING,
 			unique: true
+		},
+		org: {
+			type: Sequelize.STRING
 		}
 	});
 	return model;

@@ -12,10 +12,42 @@ var userCreate = function() {
 	});
 };
 
+
+var orgCreate = function() {
+	return DB.Organization.bulkCreate([{
+	    name: "Kiva",
+	    url: "https://www.kiva.org/",
+	    thumbnail: "/assets/kiva.png",
+	    threshold: 1
+  	},
+  	{
+	    name: "Village Capital",
+	    url: "http://vilcap.com/",
+	    thumbnail: "/assets/village_capital.png",
+	    threshold: 1
+  	},
+  	{
+	    name: "Unreasonable Institute",
+	    url: "https://unreasonableinstitute.org/",
+	    thumbnail: "/assets/unreasonable_institute.png",
+	    threshold: 1
+  	},
+  	{
+	    name: "Impact Charitable",
+	    url: "http://www.impactcharitable.org/",
+	    thumbnail: "/assets/impact_charitable.png",
+	    threshold: 2
+  	}])
+	.then(function(org) {
+    	console.log(org);
+	});
+};
+
 var pledgeCreate = function() {
 	return DB.Pledge.create({
 	    user_id: "1",
-	    savings2016: "5000"
+	    savings2016: "5000",
+	    org: "Kiva"
   	})
 	.then(function(pledge) {
     	console.log(pledge);
@@ -23,6 +55,7 @@ var pledgeCreate = function() {
 };
 
 userCreate()
+.then(orgCreate)
 .then(pledgeCreate)
 .then(function() {
 	process.exit();

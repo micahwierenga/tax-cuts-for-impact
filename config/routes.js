@@ -15,13 +15,15 @@ var authCheck = jwt({
 
 router.post('/api/user', userController.create);
 
+// Pledge Routes
+
+router.get('/api/pledge', pledgeController.index);
+
 router.post('/api/pledge', authCheck, pledgeController.create);
-
-
-
 
 // Organization Routes
 
+router.get('/api/orgs', orgController.index);
 
 
 module.exports = router;

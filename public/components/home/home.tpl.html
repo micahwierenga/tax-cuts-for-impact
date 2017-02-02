@@ -1,25 +1,33 @@
 <md-content class="home-calculator">
-	<h1>Welcome to the Tax Cuts for Impact App!</h1>
+	<h2>Tax Cuts for Impact</h2>
+	<h4>Use the calculator below to determine your tax savings</h4>
 	
-	<div>
-		<!-- <p><input type="number" ng-model="a"></p>
-		<p><input type="number" ng-model="b"></p>
-		<p>{{ result() }}</p> -->
+	<div class="calculator-container">
 		<form ng-submit="home.result(total)">
 			<div class="form-group">
-			  <input type="number" class="form-control" placeholder="Tax" ng-model="home.total.a">
+			  <input type="number" class="form-control calc" placeholder="Tax" ng-model="home.total.a">
 			</div>
 		  <div class="form-group">
-		    <input type="number" class="form-control" placeholder="Tax" ng-model="home.total.b">
+		    <input type="number" class="form-control calc" placeholder="Tax" ng-model="home.total.b">
 		  </div>
 		  <button ng-click="home.showPledgeForm=true" class="btn btn-default">Total Savings</button>
 		</form>
 
-		<div><p>{{home.noUser}}</p></div>
+		<div class="org-container">
+				<div ng-repeat="org in home.orgArr"><a href="{{org.url}}"><img class="org-thumbnail"src="{{org.thumbnail}}"></a></div>
+		</div>
+
+		<div class="no-user"><p>{{home.noUser}}</p></div>
+		
 		<form ng-show="home.showPledgeForm" ng-submit="home.makePledge(pledge)">
 			<div class="form-group">
-			  <input type="text" class="form-control" ng-model="home.pledge.savings" placeholder="{{home.product}}">
+				<h3 ng-model="home.pledge.savings">Total Savings: ${{home.product | number:0}}</h3>
 			</div>
+			<div class="form-group">
+				<select ng-model="home.pledge.org" data-ng-options="org.name as org.name for org in home.orgArr | orderBy: 'name'">
+		        	<option value="">Select Organization</option>
+		        </select>
+		    </div>
 			<div class="form-group">
 			  <input type="text" class="form-control" placeholder="Full Name" ng-model="home.pledge.name">
 			</div>

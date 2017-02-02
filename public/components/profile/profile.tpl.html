@@ -6,14 +6,18 @@
 					<img ng-src="{{ user.profile.picture }}" alt="profile-picture">
 				</div>
 				<md-card-actions layout="column" layout-align="end center">
-					<md-button ng-click="user.getMessage()">Get Message</md-button>
-					<md-button ng-click="user.getSecretMessage()">Get Secret Message</md-button>
+					<!-- <md-button ng-click="user.getMessage()">Get Message</md-button>
+					<md-button ng-click="user.getSecretMessage()">Get Secret Message</md-button> -->
 				</md-card-actions>
 			</md-card-title-media>
 			<md-card-title-text>
 				<span class="md-headline">{{ user.profile.nickname }}</span>
 				<span class="subhead">{{ user.profile.email }}</span>
-				<h3>{{ user.message }}</h3>
+				<!-- <h3>{{ user.message }}</h3> -->
+				<p>{{pledge.org}}: {{pledge.savings2016}}</p>
+				<ul class="pledge-list">
+					<li ng-repeat="pledge in user.pledge"></li>
+				</ul>
 			</md-card-title-text>
 		</md-card-title>
 	</md-card>

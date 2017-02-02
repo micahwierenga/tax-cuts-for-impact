@@ -2,6 +2,13 @@ var db = require('../models');
 var Pledge = db.models.Pledge;
 var User = db.models.User;
 
+function index (req, res) {
+	Pledge.findAll()
+		.then(function(pledge) {
+			console.log("Here's the pledge" + pledge)
+			res.json(pledge);
+		});
+};
 
 function show (req, res) {
 	Pledge.findById(req.params.id)
@@ -11,11 +18,8 @@ function show (req, res) {
 };
 
 function create(req, res) {
-	console.log('Yippee create pledges');
-	console.log(req.body);
 	Pledge.create(req.body)
 	    .then(function(newPledge) {
-	    	console.log(newPledge);
 	    	res.json(newPledge);
 	    });
 };
@@ -40,6 +44,7 @@ function destroy (req, res) {
 		});
 };
 
+module.exports.index = index;
 module.exports.show = show;
 module.exports.create = create;
 module.exports.update = update;
