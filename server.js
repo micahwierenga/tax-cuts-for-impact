@@ -30,5 +30,5 @@ app.use('/', express.static(__dirname + '/public'));
 
 app.use(taxRouter);
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
 console.log('Listening on 3001');
