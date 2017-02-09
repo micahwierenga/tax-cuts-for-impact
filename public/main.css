@@ -68,9 +68,13 @@ md-content.home-calculator {
 	text-align: center;	
 }
 
+.tax-calculator-box {
+	/*margin: 5px;*/
+}
+
 .pledge-box {
 	border: 1px solid #888;
-	margin-left: 50px;
+	/*margin: 5px;*/
 }
 
 a:focus, a:hover {
@@ -79,7 +83,7 @@ a:focus, a:hover {
 }
 
 .header {
-  max-width: 550px;
+  /*max-width: 550px;*/
   margin: auto;
   text-align: center; }
 
@@ -91,8 +95,9 @@ a:focus, a:hover {
   border-radius: 4px;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  max-width: 550px;
-  margin: auto; }
+  /*max-width: 550px;
+  margin: auto; */
+}
   .tax-calculator__headline {
     color: #333;
     text-align: center;
