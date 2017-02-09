@@ -6,7 +6,7 @@ md-content.home-calculator {
 
 .home-calculator {
 	/*text-align: center;*/
-	width: 70%;
+	width: 90%;
 }
 
 .calculator-title {
@@ -34,6 +34,7 @@ md-content.home-calculator {
 .org-thumbnail {
 	width: 100%;
 	float: left;
+	box-shadow: 5px 5px 5px rgba(63, 81, 181, .2);
 	/*margin: 15px auto;*/
 }
 
@@ -70,11 +71,18 @@ md-content.home-calculator {
 
 .tax-calculator-box {
 	/*margin: 5px;*/
+	box-shadow: 10px 10px 5px rgba(63, 81, 181, .2);
+	padding: 10px;
+	margin-right: 10%;
+	width: 45%;
 }
 
 .pledge-box {
 	border: 1px solid #888;
 	/*margin: 5px;*/
+	border-radius: 4px;
+	box-shadow: 10px 10px 5px rgba(63, 81, 181, .2);
+	width: 45%;
 }
 
 a:focus, a:hover {
