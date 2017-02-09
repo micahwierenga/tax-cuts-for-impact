@@ -21,6 +21,10 @@ router.get('/api/pledge', pledgeController.index);
 
 router.post('/api/pledge', authCheck, pledgeController.create);
 
+router.delete('/api/pledge/:id', pledgeController.destroy);
+
+router.put('/api/pledge/:id', pledgeController.update);
+
 // Organization Routes
 
 router.get('/api/orgs', orgController.index);

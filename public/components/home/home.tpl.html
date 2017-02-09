@@ -1,43 +1,179 @@
 <md-content class="home-calculator">
-	<h2>Tax Cuts for Impact</h2>
-	<h4>Use the calculator below to determine your tax savings</h4>
 	
-	<div class="calculator-container">
-		<form ng-submit="home.result(total)">
+	<div class="calculator-container row">
+	
+<!-- 		<form ng-submit="home.result(total)">
 			<div class="form-group">
-			  <input type="number" class="form-control calc" placeholder="Tax" ng-model="home.total.a">
+			  <input type="number" class="form-control calc" placeholder="Placeholder Number" ng-model="home.total.a">
 			</div>
 		  <div class="form-group">
-		    <input type="number" class="form-control calc" placeholder="Tax" ng-model="home.total.b">
+		    <input type="number" class="form-control calc" placeholder="Placeholder Number" ng-model="home.total.b">
 		  </div>
-		  <button ng-click="home.showPledgeForm=true" class="btn btn-default">Total Savings</button>
-		</form>
+		  <button ng-click="home.showPledgeForm=true" class="btn btn-default">Estimated Tax Returns</button>
+		</form> -->
 
-		<div class="org-container">
-				<div ng-repeat="org in home.orgArr"><a href="{{org.url}}"><img class="org-thumbnail"src="{{org.thumbnail}}"></a></div>
+		<!-- <iframe height="1500px" src="https://static.taxfoundation.org/presidential-tax-calculator-2016/index.html" width="100%"></iframe> -->
+
+
+		<div class="tax-calculator col-md-6" id="app">
+			<h2 class="steps-text">Step 1</h2>
+			<h4 class="steps-text">Calculate your estimated tax savings</h4>
+				<div class="tax-calculator__fields">
+					<div class="tax-calculator__field">
+						<label class="tax-calculator__label" for="income1">What is your income?</label>
+						<div class="col-10">
+							<input class="tax-calculator__number-field" id="income1" name="income1" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+						</div>
+					</div>
+					<div class="tax-calculator__field">
+						<label class="tax-calculator__label" for="married">Are you married?</label>
+						<input class="tax-calculator__checkbox" id="married" name="married" type="checkbox" onchange="app.toggleMarriage()"/>
+					</div>
+					<div class="tax-calculator__field tax-calculator__field--hidden" id="income2-field">
+						<label class="tax-calculator__label" for="income2">What is your spouse's income?</label>
+						<input class="tax-calculator__number-field" id="income2" name="income2" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+					</div>
+					<div class="tax-calculator__field">
+						<label class="tax-calculator__label" for="deductions-tick">Will you take itemized deductions?</label>
+						<input class="tax-calculator__checkbox" id="deductions-tick" name="deductions-tick" type="checkbox" onchange="app.toggleItemizedDeductions()"/>
+					</div>
+					<div class="tax-calculator__field tax-calculator__field--hidden" id="deductions-field">
+						<label class="tax-calculator__label" for="deductions">How many dollars of itemized deductions will you claim?</label>
+						<input class="tax-calculator__number-field" id="deductions" name="deductions" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+					</div>
+					<div class="tax-calculator__field">
+						<label class="tax-calculator__label" for="children">How many dependents do you have?</label>
+						<input class="tax-calculator__number-field" id="children" name="children" type="number" value="0" onclick="this.select()" oninput="app.setChildrenUnderFiveRange()"/>
+					</div>
+					<div class="tax-calculator__field tax-calculator__field--hidden" id="children-under-five-field">
+						<label class="tax-calculator__label" for="children5">How many dependents are children under five years old?</label>
+						<div class="tax-calculator__range">
+							<label style="display:inline-block">0</label>
+							<input class="tax-calculator__range-field" id="children5" name="children5" type="range" value="0" min="0" max="0" oninput="app.setChildrenUnderFiveSelected()" style="display:inline-block"/>
+							<label id="children5max" style="display:inline-block">0</label>
+						</div>
+						<p style="text-align:center">Total children under five:&nbsp;<span id="childrenUnderFiveSelected">0</span></p>
+					</div>
+					<div class="tax-calculator__field tax-calculator__field--hidden" id="childcare-field">
+						<label class="tax-calculator__label" for="childcare">How much do you spend on childcare in a year?</label>
+						<input class="tax-calculator__number-field" id="childcare" name="childcare" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+					</div>
+				</div><!-- tax-calculator__fields -->
+				<table class="tax-calculator-table">
+					<thead class="tax-calculator-table__head">
+						<tr class="tax-calculator-table__title"></tr>
+						<tr class="tax-calculator-table__headers">
+							<th class="tax-calculator-table__header">Details and Provisions</th>
+							<th class="tax-calculator-table__header">Current Law</th>
+							<th class="tax-calculator-table__header">Clinton</th>
+							<th class="tax-calculator-table__header">Trump</th>
+						</tr>
+					</thead>
+					<tbody class="tax-calculator-table__body" id="tax-results-body"></tbody>
+				</table>
+		</div><!-- div.tax-calculator -->
+		
+		<div class="pledge-box col-md-6">
+			<h2 class="steps-text">Step 2</h2>
+			<h4 class="steps-text">Make a non-binding pledge to the non-profit of your choice</h4>
+			<!-- Button trigger modal -->
+			<div class="pledge-button-box">
+			
+				<button class="btn btn-primary btn-lg" data-toggle="modal" ng-click="home.getOrgs()" data-target="#myModalNorm">Make a Pledge</button>
+			</div>
+			<div>
+			    <table class="table table-striped">
+					<tr>
+						<th colspan="2"><h2 class="org-description-title">TOTAL DONATIONS</h2></th>
+					</tr>
+					<tr ng-repeat="orgs in home.allOrgsArr">
+						<td class="org-thumbnail-cell"><a href="{{orgs.url}}" target="_blank"><img class="org-thumbnail" src="{{orgs.thumbnail}}"></a></td>
+						<td class="org-description-cell">
+							<h2 class="org-description-title"><strong>{{orgs.name}}</strong></h2>
+							<h1 class="org-donations">{{orgs.totalDonations | currency: "$" : 0 }}</h1>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 
-		<div class="no-user"><p>{{home.noUser}}</p></div>
-		
-		<form ng-show="home.showPledgeForm" ng-submit="home.makePledge(pledge)">
-			<div class="form-group">
-				<h3 ng-model="home.pledge.savings">Total Savings: ${{home.product | number:0}}</h3>
-			</div>
-			<div class="form-group">
-				<select ng-model="home.pledge.org" data-ng-options="org.name as org.name for org in home.orgArr | orderBy: 'name'">
-		        	<option value="">Select Organization</option>
-		        </select>
-		    </div>
-			<div class="form-group">
-			  <input type="text" class="form-control" placeholder="Full Name" ng-model="home.pledge.name">
-			</div>
-		  <div class="form-group">
-		    <input type="text" class="form-control" placeholder="Email" ng-model="home.pledge.email">
-		  </div>
-		  <div class="form-group">
-		    <input type="text" class="form-control" placeholder="Zip" ng-model="home.pledge.zip">
-		  </div>
-		  <button class="btn btn-default">Make a Pledge</button>
-		</form>
 	</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Make a Pledge
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="no-user"><p>{{home.noUser}}</p></div>
+                <div>
+                	<table class="table table-striped">
+<!-- 						<tr>
+							<th>Date</th>
+							<th>Organization</th>
+							<th>Estimated Savings</th>
+							<th>Pledge</th>
+							<th></th>
+							<th></th>
+						</tr> -->
+						<tr ng-repeat="org in home.orgArr">
+							<td class="org-thumbnail-cell"><a href="{{org.url}}" target="_blank"><img class="org-thumbnail" src="{{org.thumbnail}}"></a></td>
+							<td class="org-description-cell">
+								<h4 class="org-description-title"><strong>{{org.name}}</strong></h4>
+								<p>{{org.description}}</p>
+							</td>
+						</tr>
+					</table>
+                </div>
+                <form role="form">
+                  <div class="form-group">
+                      <h3 ng-model="home.pledge.savings">Total Estimated Savings: <span id="estimatedSavings"></span></h3>
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control" ng-model="home.pledge.org" data-ng-options="org.name as org.name for org in home.orgArr | orderBy: 'name'">
+					<option value="">Select Organization</option>
+				</select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Pledge Amount</label>
+                      <input type="number" class="form-control" placeholder="Pledge Amount" ng-model="home.pledge.amount">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Full Name</label>
+                      <input type="text" class="form-control" placeholder="Full Name" ng-model="home.pledge.name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Email</label>
+                      <input type="text" class="form-control" placeholder="Email" ng-model="home.pledge.email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Zip Code</label>
+                      <input type="text" class="form-control" placeholder="Zip" ng-model="home.pledge.zip">
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                	<button type="button" class="btn btn-primary" ng-click="home.makePledge(home.pledge)" data-dismiss="modal">Submit</button>
+                  </div>
+                </form>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
 </md-content>
+

@@ -3,7 +3,8 @@
 		<md-card-title>
 			<md-card-title-media>
 				<div class="md-media-lg card-media" layout-padding>
-					<img ng-src="{{ user.profile.picture }}" alt="profile-picture">
+					<!-- <img ng-src="{{ user.profile.picture }}" alt="profile-picture"> -->
+					<img src="/assets/micah.jpeg">
 				</div>
 				<md-card-actions layout="column" layout-align="end center">
 					<!-- <md-button ng-click="user.getMessage()">Get Message</md-button>
@@ -14,11 +15,33 @@
 				<span class="md-headline">{{ user.profile.nickname }}</span>
 				<span class="subhead">{{ user.profile.email }}</span>
 				<!-- <h3>{{ user.message }}</h3> -->
-				<p>{{pledge.org}}: {{pledge.savings2016}}</p>
-				<ul class="pledge-list">
-					<li ng-repeat="pledge in user.pledge"></li>
-				</ul>
 			</md-card-title-text>
+
+		</md-card-title>
+		<md-card-title>
+<!-- 			<ul class="pledge-list">
+				<li ng-repeat="pledge in user.allPledges">{{pledge.org}}: {{pledge.savings2016}}</li>
+			</ul> -->
+			<table class="table table-striped">
+				<tr>
+					<th>Date</th>
+					<th>Organization</th>
+					<th>Estimated Savings</th>
+					<th>Pledge</th>
+					<!-- <th>Admin</th> -->
+					<th></th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="pledge in user.profilePledges">
+					<td>{{pledge.createdAt | date : format : timezone}}</td>
+					<td>{{pledge.org}}</td>
+					<td>{{pledge.savings2016}}</td>
+					<td>{{pledge.pledge2016}}</td>
+					<!-- <td><input type="checkbox" ng-model="admin.new_user.admin" ng-true-value="true" ng-false-value="false"></td> -->
+					<td><button class="btn" ng-click="user.updatePledge(pledge)">Update</button></td>
+					<td><button class="btn" ng-click="user.deletePledge(pledge)">Delete</button></td>
+				</tr>
+			</table>
 		</md-card-title>
 	</md-card>
 </md-content>

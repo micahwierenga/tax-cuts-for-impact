@@ -7,7 +7,6 @@ var Organization = db.models.Organization;
 function index (req, res) {
 	Organization.findAll()
 		.then(function(organization) {
-			console.log(organization)
 			res.json(organization);
 		});
 };

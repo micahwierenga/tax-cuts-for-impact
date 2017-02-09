@@ -10,8 +10,10 @@ module.exports = function(sequelize, Sequelize) {
 			allowNull: false
 		},
 		savings2016: {
-			type: Sequelize.STRING,
-			unique: true
+			type: Sequelize.STRING
+		},
+		pledge2016: {
+			type: Sequelize.STRING
 		},
 		org: {
 			type: Sequelize.STRING

@@ -18,6 +18,12 @@ module.exports = function(sequelize, Sequelize) {
 		},
 		threshold: {
 			type: Sequelize.INTEGER
+		},
+		description: {
+			type: Sequelize.STRING
+		},
+		totalDonations: {
+			type: Sequelize.INTEGER
 		}
 	});
 	return model;

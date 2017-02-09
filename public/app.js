@@ -1,9 +1,8 @@
-console.log("here is the app.js")
-
 'use strict';
 
 angular
 	.module('tcApp', ['auth0', 'angular-storage', 'angular-jwt', 'ngMaterial', 'ui.router'])
+	// .module('tcApp', ['auth0', 'angular-storage', 'angular-jwt', 'ngMaterial', 'ui.router', 'modal-form', 'ui.bootstrap'])
 	.config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider, jwtOptionsProvider) {
 
 		jwtOptionsProvider.config({
@@ -70,4 +69,26 @@ angular
 				$location.path('/home');
 			}
 		})
-	});
+	})
+	// .run(['$rootScope', '$window', 'formService', function($rootScope, $window, formService) {
+	//     $rootScope.user = {
+	//       email: "test@google.com",
+	//       password: "test123456"
+	//     };
+	    
+	//     $rootScope.init = function() {
+	//       $window.location.reload();
+	//     };
+	    
+	//     // open modal form dynamically
+	//     $rootScope.open = formService({
+	//       data: $rootScope.user,
+	//       templateUrl: '/pledge/pledge.tpl.html',
+	//       method: 'POST',
+	//       callback: $rootScope.init,
+	//       path: '/',
+	//       dialogClass: 'small',
+	//       closeOnSuccess: true
+	//     });
+	//   }]);
+

@@ -25,23 +25,27 @@ function create(req, res) {
 };
 
 function update (req, res) {
+	console.log(req.body);
 	Pledge.findById(req.params.id)
 		.then(function(user) {
+			console.log('This is the first then: ' + user);
 			return user.updateAttributes(req.body);
 		})
 		.then(function(user) {
+			console.log('This is the second then: ' + user)
 			res.json(user);
 		});
 };
 
 function destroy (req, res) {
 	Pledge.findById(req.params.id)
-		.then(function(user) {
-			return user.destroy();
+		.then(function(pledge) {
+			res.json(pledge);
+			return pledge.destroy();
 		})
-		.then(function() {
-			res.redirect('/index');
-		});
+		// .then(function() {
+		// 	res.redirect('/');
+		// });
 };
 
 module.exports.index = index;
