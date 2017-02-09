@@ -1,7 +1,13 @@
-
+body {
+	background-color: #286090;
+}
 
 md-content.home-calculator {
 	margin: 0 auto;
+}
+
+.calculator-container {
+	/*background-color: rgba(63, 81, 181, 1);*/
 }
 
 .home-calculator {
@@ -71,7 +77,7 @@ md-content.home-calculator {
 
 .tax-calculator-box {
 	/*margin: 5px;*/
-	box-shadow: 10px 10px 5px rgba(63, 81, 181, .2);
+	box-shadow: 10px 10px 5px rgba(51, 122, 183, .2);
 	padding: 10px;
 	margin-right: 10%;
 	width: 45%;
@@ -81,13 +87,18 @@ md-content.home-calculator {
 	border: 1px solid #888;
 	/*margin: 5px;*/
 	border-radius: 4px;
-	box-shadow: 10px 10px 5px rgba(63, 81, 181, .2);
+	box-shadow: 10px 10px 5px rgba(51, 122, 183, .2);
 	width: 45%;
 }
 
 a:focus, a:hover {
 	color: #bbb;
 	text-decoration: none;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+	background-color: rgba(51, 122, 183, 1);
+	color: white;
 }
 
 .header {
