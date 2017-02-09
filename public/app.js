@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-	.module('tcApp', ['auth0', 'angular-storage', 'angular-jwt', 'ngMaterial', 'ui.router'])
+	.module('tcApp', ['auth0', 'angular-storage', 'angular-jwt', 'ngMaterial', 'ui.router', 'ngCountTo'])
 	// .module('tcApp', ['auth0', 'angular-storage', 'angular-jwt', 'ngMaterial', 'ui.router', 'modal-form', 'ui.bootstrap'])
 	.config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider, jwtOptionsProvider) {
 

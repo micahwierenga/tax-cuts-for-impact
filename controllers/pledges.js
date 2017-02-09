@@ -5,7 +5,6 @@ var User = db.models.User;
 function index (req, res) {
 	Pledge.findAll()
 		.then(function(pledge) {
-			console.log("Here's the pledge" + pledge)
 			res.json(pledge);
 		});
 };
@@ -28,11 +27,9 @@ function update (req, res) {
 	console.log(req.body);
 	Pledge.findById(req.params.id)
 		.then(function(user) {
-			console.log('This is the first then: ' + user);
 			return user.updateAttributes(req.body);
 		})
 		.then(function(user) {
-			console.log('This is the second then: ' + user)
 			res.json(user);
 		});
 };

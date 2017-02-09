@@ -86,13 +86,41 @@
 					<tr>
 						<th colspan="2"><h2 class="org-description-title">TOTAL DONATIONS</h2></th>
 					</tr>
-					<tr ng-repeat="orgs in home.allOrgsArr">
+					<tr ng-repeat="orgs in home.allOrgsArr | orderBy: 'id'">
 						<td class="org-thumbnail-cell"><a href="{{orgs.url}}" target="_blank"><img class="org-thumbnail" src="{{orgs.thumbnail}}"></a></td>
 						<td class="org-description-cell">
 							<h2 class="org-description-title"><strong>{{orgs.name}}</strong></h2>
-							<h1 class="org-donations">{{orgs.totalDonations | currency: "$" : 0 }}</h1>
+							<h1 class="org-donations" ng-count-to="{{orgs.totalDonations}}" value="0" duration="4" filter="currency" params="$"></h1>
 						</td>
 					</tr>
+<!-- 					<tr>
+						<td class="org-thumbnail-cell"><a href="https://www.kiva.org/" target="_blank"><img class="org-thumbnail" src="/assets/kiva.jpg"></a></td>
+						<td class="org-description-cell">
+							<h2 class="org-description-title"><strong>Kiva</strong></h2>
+							<h1 class="org-donations">{{home.allOrgsArr[0].totalDonations | currency: "$" : 0 }}</h1>
+						</td>
+					</tr>
+					<tr>
+						<td class="org-thumbnail-cell"><a href="http://vilcap.com/" target="_blank"><img class="org-thumbnail" src="/assets/village_capital.png"></a></td>
+						<td class="org-description-cell">
+							<h2 class="org-description-title"><strong>Village Capital</strong></h2>
+							<h1 class="org-donations">{{home.allOrgsArr[1].totalDonations | currency: "$" : 0 }}</h1>
+						</td>
+					</tr>
+					<tr>
+						<td class="org-thumbnail-cell"><a href="https://unreasonableinstitute.org/" target="_blank"><img class="org-thumbnail" src="/assets/unreasonable_institute.png"></a></td>
+						<td class="org-description-cell">
+							<h2 class="org-description-title"><strong>Unreasonable Institute</strong></h2>
+							<h1 class="org-donations">{{home.allOrgsArr[2].totalDonations | currency: "$" : 0 }}</h1>
+						</td>
+					</tr>
+					<tr>
+						<td class="org-thumbnail-cell"><a href="http://www.impactcharitable.org/for-donors/" target="_blank"><img class="org-thumbnail" src="/assets/impact_charitable.png"></a></td>
+						<td class="org-description-cell">
+							<h2 class="org-description-title"><strong>Impact Charitable</strong></h2>
+							<h1 class="org-donations">{{home.allOrgsArr[3].totalDonations | currency: "$" : 0 }}</h1>
+						</td>
+					</tr> -->
 				</table>
 			</div>
 		</div>

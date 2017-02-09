@@ -26,6 +26,7 @@ function create(req, res) {
 };
 
 function update (req, res) {
+	console.log("Here is the req.body" + req.params.id)
 	Organization.findById(req.params.id)
 		.then(function(organization) {
 			return organization.updateAttributes(req.body);

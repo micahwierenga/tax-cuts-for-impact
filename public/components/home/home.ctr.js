@@ -9,7 +9,6 @@ function homeController($http, $location) {
 	vm.result = result;
 	vm.getAllOrgs = getAllOrgs;
 	vm.getOrgs = getOrgs;
-	// vm.getTotalPledges = getTotalPledges;
 	vm.makePledge = makePledge;
 
 
@@ -51,20 +50,6 @@ function homeController($http, $location) {
 			})
 	}
 
-	// getOrgs();
-
-	// function getTotalPledges() {
-	// 	$http
-	// 		.get('/api/pledge')
-	// 		.then(function(pledges) {
-	// 			vm.totalPledges = pledges.data;
-	// 			console.log(vm.totalPledges);
-	// 		})
-
-	// }
-
-	// getTotalPledges();
-
 	function getCurrentUser() {
 		vm.current = localStorage.getItem('profile');
 		vm.currentUser = JSON.parse(vm.current);
@@ -88,29 +73,25 @@ function homeController($http, $location) {
 			.post('/api/pledge', vm.new_pledge)
 			.then(function(response) {
 				vm.newPledge = response.data;
-				$location.path('/profile');
+				// $location.path('/profile');
 			});
-		$http
-			.get('/api/orgs')
-			.then(function(response) {
-				vm.orgPledgeArr = response.data;
-				vm.orgTotalDonations = [];
-				for (var i = 0; i < vm.orgPledgeArr.length; i++) {
-					vm.orgTotalDonations.push(vm.orgPledgeArr[i].totalDonations);
-				}
-				vm.currentDonation = {
 
+		for (var i = 0; i < vm.allOrgsArr.length; i++) {
+			if (pledge.org == vm.allOrgsArr[i].name) {
+				vm.updateOrg = {
+					"id": vm.allOrgsArr[i].id,
+					"name": vm.allOrgsArr[i].name,
+					"totalDonations": vm.allOrgsArr[i].totalDonations + pledge.amount
 				}
-			})
-		// vm.updatedOrg = {
-		// 	"name": ,
-		// 	"totalDonations": pledge.amount
-		// }
+			}
+		}
+		console.log(vm.updateOrg);
 		$http
-			.put('/api/orgs/' + pledge.org, pledge.amount)
+			.put('/api/orgs/' + vm.updateOrg.id, vm.updateOrg)
 			.then(function(response) {
 				vm.updatedOrg = response.data;
-				console.log(updatedOrg);
+				console.log(vm.updatedOrg);
+				// getAllOrgs();
 			})
 	}
 

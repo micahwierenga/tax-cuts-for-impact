@@ -29,5 +29,7 @@ router.put('/api/pledge/:id', pledgeController.update);
 
 router.get('/api/orgs', orgController.index);
 
+router.put('/api/orgs/:id', orgController.update);
+
 
 module.exports = router;

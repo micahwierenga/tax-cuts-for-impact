@@ -73,6 +73,11 @@ md-content.home-calculator {
 	margin-left: 50px;
 }
 
+a:focus, a:hover {
+	color: #bbb;
+	text-decoration: none;
+}
+
 .header {
   max-width: 550px;
   margin: auto;
