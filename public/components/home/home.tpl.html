@@ -65,8 +65,8 @@
 						<tr class="tax-calculator-table__headers">
 							<th class="tax-calculator-table__header">Details and Provisions</th>
 							<th class="tax-calculator-table__header">Current Law</th>
-							<th class="tax-calculator-table__header">Clinton</th>
-							<th class="tax-calculator-table__header">Trump</th>
+							<th class="tax-calculator-table__header">Trump's Plan</th>
+							<!-- <th class="tax-calculator-table__header">Clinton</th> -->
 						</tr>
 					</thead>
 					<tbody class="tax-calculator-table__body" id="tax-results-body"></tbody>
@@ -173,8 +173,8 @@
                   </div>
                   <div class="form-group">
                     <select class="form-control" ng-model="home.pledge.org" data-ng-options="org.name as org.name for org in home.orgArr | orderBy: 'name'">
-					<option value="">Select Organization</option>
-				</select>
+						<option value="">Select Organization</option>
+					</select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Pledge Amount</label>

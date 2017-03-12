@@ -79,7 +79,7 @@
 	      label.innerHTML = app.tableRows[i].name;
 	      document.getElementById(app.tableRows[i].id).appendChild(label);
 
-	      for (var m = 0, n = app.laws.length; m < n; m++) {
+	      for (var m = 0, n = app.laws.length; m < 2; m++) {
 	        cell = document.createElement('td');
 	        var cellId = app.laws[m].id + '-' + app.tableRows[i].id;
 	        cell.id = cellId;
@@ -901,6 +901,150 @@
 	    },
 	  },
 	  {
+	    name: 'Trump Plan',
+	    id: 'trump',
+	    standardDeuction: {
+	      single: 15000,
+	      married: 30000,
+	      hoh: 15000,
+	    },
+	    personalExemption: 0,
+	    brackets: [
+	      {
+	        rate: 0.12,
+	        single: 0,
+	        married: 0,
+	        hoh: 0,
+	      },
+	      {
+	        rate: 0.25,
+	        single: 37500,
+	        married: 75000,
+	        hoh: 37500,
+	      },
+	      {
+	        rate: 0.33,
+	        single: 112500,
+	        married: 225000,
+	        hoh: 112500,
+	      },
+	    ],
+	    eitc: {
+	      0: {
+	        max: 506,
+	        threshold: 6610,
+	        phaseout: {
+	          single: 8270,
+	          married: 13820,
+	        },
+	        maxIncome: {
+	          single: 14880,
+	          married: 20430,
+	        },
+	      },
+	      1: {
+	        max: 3373,
+	        threshold: 9920,
+	        phaseout: {
+	          single: 18190,
+	          married: 23740,
+	        },
+	        maxIncome: {
+	          single: 39269,
+	          married: 44846,
+	        },
+	      },
+	      2: {
+	        max: 5572,
+	        threshold: 13930,
+	        phaseout: {
+	          single: 18190,
+	          married: 23740,
+	        },
+	        maxIncome: {
+	          single: 44648,
+	          married: 50198,
+	        },
+	      },
+	      3: {
+	        max: 6269,
+	        threshold: 13930,
+	        phaseout: {
+	          single: 18190,
+	          married: 23740,
+	        },
+	        maxIncome: {
+	          single: 47955,
+	          married: 53505,
+	        },
+	      },
+	    },
+	    employeePayroll: [
+	      {
+	        rate: 0.0765,
+	        income: 0,
+	      },
+	      {
+	        rate: 0.0145,
+	        income: 118500,
+	      },
+	    ],
+	    employerPayroll: [
+	      {
+	        rate: 0.0765,
+	        income: 0,
+	      },
+	      {
+	        rate: 0.0145,
+	        income: 118500,
+	      },
+	    ],
+	    medicareSurtax: {
+	      single: [
+	        {
+	          rate: 0,
+	          income: 0,
+	        },
+	        {
+	          rate: 0.009,
+	          income: 200000,
+	        },
+	      ],
+	      married: [
+	        {
+	          rate: 0,
+	          income: 0,
+	        },
+	        {
+	          rate: 0.009,
+	          income: 250000,
+	        },
+	      ],
+	    },
+	    unemploymentInsurance: {
+	      rate: 0.06,
+	      income: 7000,
+	    },
+	    ctc: {
+	      credit: 1000,
+	      phaseIn: 3000,
+	      phaseInRate: 0.15,
+	      phaseout: {
+	        single: 75000,
+	        married: 110000,
+	      },
+	      phaseoutRate: 0.05,
+	    },
+	    pepPease: { // Not Used
+	      threshold: {
+	        single: 258250,
+	        married: 309900,
+	        hoh: 284050,
+	      },
+	      phaseoutRate: 0.05,
+	    },
+	  },
+	  {
 	    name: 'Clinton Plan',
 	    id: 'clinton',
 	    standardDeuction: {
@@ -1087,151 +1231,151 @@
 	        phaseout: 159700,
 	      },
 	    },
-	  },
-	  {
-	    name: 'Trump Plan',
-	    id: 'trump',
-	    standardDeuction: {
-	      single: 15000,
-	      married: 30000,
-	      hoh: 15000,
-	    },
-	    personalExemption: 0,
-	    brackets: [
-	      {
-	        rate: 0.12,
-	        single: 0,
-	        married: 0,
-	        hoh: 0,
-	      },
-	      {
-	        rate: 0.25,
-	        single: 37500,
-	        married: 75000,
-	        hoh: 37500,
-	      },
-	      {
-	        rate: 0.33,
-	        single: 112500,
-	        married: 225000,
-	        hoh: 112500,
-	      },
-	    ],
-	    eitc: {
-	      0: {
-	        max: 506,
-	        threshold: 6610,
-	        phaseout: {
-	          single: 8270,
-	          married: 13820,
-	        },
-	        maxIncome: {
-	          single: 14880,
-	          married: 20430,
-	        },
-	      },
-	      1: {
-	        max: 3373,
-	        threshold: 9920,
-	        phaseout: {
-	          single: 18190,
-	          married: 23740,
-	        },
-	        maxIncome: {
-	          single: 39269,
-	          married: 44846,
-	        },
-	      },
-	      2: {
-	        max: 5572,
-	        threshold: 13930,
-	        phaseout: {
-	          single: 18190,
-	          married: 23740,
-	        },
-	        maxIncome: {
-	          single: 44648,
-	          married: 50198,
-	        },
-	      },
-	      3: {
-	        max: 6269,
-	        threshold: 13930,
-	        phaseout: {
-	          single: 18190,
-	          married: 23740,
-	        },
-	        maxIncome: {
-	          single: 47955,
-	          married: 53505,
-	        },
-	      },
-	    },
-	    employeePayroll: [
-	      {
-	        rate: 0.0765,
-	        income: 0,
-	      },
-	      {
-	        rate: 0.0145,
-	        income: 118500,
-	      },
-	    ],
-	    employerPayroll: [
-	      {
-	        rate: 0.0765,
-	        income: 0,
-	      },
-	      {
-	        rate: 0.0145,
-	        income: 118500,
-	      },
-	    ],
-	    medicareSurtax: {
-	      single: [
-	        {
-	          rate: 0,
-	          income: 0,
-	        },
-	        {
-	          rate: 0.009,
-	          income: 200000,
-	        },
-	      ],
-	      married: [
-	        {
-	          rate: 0,
-	          income: 0,
-	        },
-	        {
-	          rate: 0.009,
-	          income: 250000,
-	        },
-	      ],
-	    },
-	    unemploymentInsurance: {
-	      rate: 0.06,
-	      income: 7000,
-	    },
-	    ctc: {
-	      credit: 1000,
-	      phaseIn: 3000,
-	      phaseInRate: 0.15,
-	      phaseout: {
-	        single: 75000,
-	        married: 110000,
-	      },
-	      phaseoutRate: 0.05,
-	    },
-	    pepPease: { // Not Used
-	      threshold: {
-	        single: 258250,
-	        married: 309900,
-	        hoh: 284050,
-	      },
-	      phaseoutRate: 0.05,
-	    },
-	  },
+	  }
+	  // {
+	  //   name: 'Trump Plan',
+	  //   id: 'trump',
+	  //   standardDeuction: {
+	  //     single: 15000,
+	  //     married: 30000,
+	  //     hoh: 15000,
+	  //   },
+	  //   personalExemption: 0,
+	  //   brackets: [
+	  //     {
+	  //       rate: 0.12,
+	  //       single: 0,
+	  //       married: 0,
+	  //       hoh: 0,
+	  //     },
+	  //     {
+	  //       rate: 0.25,
+	  //       single: 37500,
+	  //       married: 75000,
+	  //       hoh: 37500,
+	  //     },
+	  //     {
+	  //       rate: 0.33,
+	  //       single: 112500,
+	  //       married: 225000,
+	  //       hoh: 112500,
+	  //     },
+	  //   ],
+	  //   eitc: {
+	  //     0: {
+	  //       max: 506,
+	  //       threshold: 6610,
+	  //       phaseout: {
+	  //         single: 8270,
+	  //         married: 13820,
+	  //       },
+	  //       maxIncome: {
+	  //         single: 14880,
+	  //         married: 20430,
+	  //       },
+	  //     },
+	  //     1: {
+	  //       max: 3373,
+	  //       threshold: 9920,
+	  //       phaseout: {
+	  //         single: 18190,
+	  //         married: 23740,
+	  //       },
+	  //       maxIncome: {
+	  //         single: 39269,
+	  //         married: 44846,
+	  //       },
+	  //     },
+	  //     2: {
+	  //       max: 5572,
+	  //       threshold: 13930,
+	  //       phaseout: {
+	  //         single: 18190,
+	  //         married: 23740,
+	  //       },
+	  //       maxIncome: {
+	  //         single: 44648,
+	  //         married: 50198,
+	  //       },
+	  //     },
+	  //     3: {
+	  //       max: 6269,
+	  //       threshold: 13930,
+	  //       phaseout: {
+	  //         single: 18190,
+	  //         married: 23740,
+	  //       },
+	  //       maxIncome: {
+	  //         single: 47955,
+	  //         married: 53505,
+	  //       },
+	  //     },
+	  //   },
+	  //   employeePayroll: [
+	  //     {
+	  //       rate: 0.0765,
+	  //       income: 0,
+	  //     },
+	  //     {
+	  //       rate: 0.0145,
+	  //       income: 118500,
+	  //     },
+	  //   ],
+	  //   employerPayroll: [
+	  //     {
+	  //       rate: 0.0765,
+	  //       income: 0,
+	  //     },
+	  //     {
+	  //       rate: 0.0145,
+	  //       income: 118500,
+	  //     },
+	  //   ],
+	  //   medicareSurtax: {
+	  //     single: [
+	  //       {
+	  //         rate: 0,
+	  //         income: 0,
+	  //       },
+	  //       {
+	  //         rate: 0.009,
+	  //         income: 200000,
+	  //       },
+	  //     ],
+	  //     married: [
+	  //       {
+	  //         rate: 0,
+	  //         income: 0,
+	  //       },
+	  //       {
+	  //         rate: 0.009,
+	  //         income: 250000,
+	  //       },
+	  //     ],
+	  //   },
+	  //   unemploymentInsurance: {
+	  //     rate: 0.06,
+	  //     income: 7000,
+	  //   },
+	  //   ctc: {
+	  //     credit: 1000,
+	  //     phaseIn: 3000,
+	  //     phaseInRate: 0.15,
+	  //     phaseout: {
+	  //       single: 75000,
+	  //       married: 110000,
+	  //     },
+	  //     phaseoutRate: 0.05,
+	  //   },
+	  //   pepPease: { // Not Used
+	  //     threshold: {
+	  //       single: 258250,
+	  //       married: 309900,
+	  //       hoh: 284050,
+	  //     },
+	  //     phaseoutRate: 0.05,
+	  //   },
+	  // },
 	];
 
 	window.addEventListener('load', function (event) {

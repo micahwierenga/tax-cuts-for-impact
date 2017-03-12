@@ -1,0 +1,57 @@
+<div class="tax-calculator" id="app">
+	<div class="tax-calculator__headline">How Would the Trump and Clinton Tax Plans Affect You?</div>
+		<div class="tax-calculator__fields">
+			<div class="tax-calculator__field form-group row">
+				<label class="tax-calculator__label col-2 col-form-label" for="income1">What is your income?</label>
+				<div class="col-10">
+					<input class="tax-calculator__number-field form-control" id="income1" name="income1" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+				</div>
+			</div>
+			<div class="tax-calculator__field">
+				<label class="tax-calculator__label" for="married">Are you married?</label>
+				<input class="tax-calculator__checkbox form-control" id="married" name="married" type="checkbox" onchange="app.toggleMarriage()"/>
+			</div>
+			<div class="tax-calculator__field tax-calculator__field--hidden" id="income2-field">
+				<label class="tax-calculator__label" for="income2">What is your spouse's income?</label>
+				<input class="tax-calculator__number-field form-control" id="income2" name="income2" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+			</div>
+			<div class="tax-calculator__field">
+				<label class="tax-calculator__label" for="deductions-tick">Will you take itemized deductions?</label>
+				<input class="tax-calculator__checkbox form-control" id="deductions-tick" name="deductions-tick" type="checkbox" onchange="app.toggleItemizedDeductions()"/>
+			</div>
+			<div class="tax-calculator__field tax-calculator__field--hidden" id="deductions-field">
+				<label class="tax-calculator__label" for="deductions">How many dollars of itemized deductions will you claim?</label>
+				<input class="tax-calculator__number-field form-control" id="deductions" name="deductions" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+			</div>
+			<div class="tax-calculator__field">
+				<label class="tax-calculator__label" for="children">How many dependents do you have?</label>
+				<input class="tax-calculator__number-field form-control" id="children" name="children" type="number" value="0" onclick="this.select()" oninput="app.setChildrenUnderFiveRange()"/>
+			</div>
+			<div class="tax-calculator__field tax-calculator__field--hidden" id="children-under-five-field">
+				<label class="tax-calculator__label" for="children5">How many dependents are children under five years old?</label>
+				<div class="tax-calculator__range">
+					<label style="display:inline-block">0</label>
+					<input class="tax-calculator__range-field form-control" id="children5" name="children5" type="range" value="0" min="0" max="0" oninput="app.setChildrenUnderFiveSelected()" style="display:inline-block"/>
+					<label id="children5max" style="display:inline-block">0</label>
+				</div>
+				<p style="text-align:center">Total children under five:&nbsp;<span id="childrenUnderFiveSelected">0</span></p>
+			</div>
+			<div class="tax-calculator__field tax-calculator__field--hidden" id="childcare-field">
+				<label class="tax-calculator__label" for="childcare">How much do you spend on childcare in a year?</label>
+				<input class="tax-calculator__number-field form-control" id="childcare" name="childcare" type="number" value="0" onclick="this.select()" oninput="app.calculate()"/>
+			</div>
+		</div><!-- tax-calculator__fields -->
+		<table class="tax-calculator-table table table-striped">
+			<thead class="tax-calculator-table__head">
+				<tr class="tax-calculator-table__title"></tr>
+				<tr class="tax-calculator-table__headers">
+					<th class="tax-calculator-table__header">Details and Provisions</th>
+					<th class="tax-calculator-table__header">Current Law</th>
+					<th class="tax-calculator-table__header">Clinton</th>
+					<th class="tax-calculator-table__header">Trump</th>
+				</tr>
+			</thead>
+			<tbody class="tax-calculator-table__body" id="tax-results-body"></tbody>
+		</table>
+	</div><!-- tax-calculator__headline -->
+</div><!-- div.tax-calculator -->
